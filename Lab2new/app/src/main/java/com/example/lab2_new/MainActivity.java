@@ -14,7 +14,7 @@ import android.app.Activity;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    private int selected_option;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,18 @@ public class MainActivity extends AppCompatActivity {
         info.add("Milk - 50$/kg");
 
         final TextView textView = (TextView) findViewById(R.id.mytextview);
-        textView.setText("Select a product");
+
+        if(savedInstanceState != null){
+            selected_option=savedInstanceState.getInt("selected_option");
+            if(selected_option==0){
+                textView.setText("The best cheese in town");
+            }else if(selected_option==1){
+                textView.setText("What cheese is made of");
+            }
+        }else{
+            textView.setText("Select a product");
+        }
+
 
 
         ArrayAdapter<String> info_list=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, info);
@@ -37,14 +48,20 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(id==0) {
                     textView.setText("The best cheese in town");
+                    selected_option=0;
                 }else if(id==1){
                     textView.setText("What cheese is made of");
+                    selected_option=1;
                 }
             }
         });
         listView.setAdapter(info_list);
-
-
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt("selected_optio", selected_option);
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
     }
 
 }
