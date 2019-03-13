@@ -1,9 +1,11 @@
 package com.example.lab2_new;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -94,6 +96,19 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.third:
                 textView.setText("You selected third option!");
+                return true;
+            case R.id.login:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Connect");
+                LayoutInflater inflater = this.getLayoutInflater();
+                builder.setView(inflater.inflate(R.layout.alert_layout,null));
+                builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) { System.out.println("You pressed OK"); }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
