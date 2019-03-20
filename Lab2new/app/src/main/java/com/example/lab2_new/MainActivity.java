@@ -3,6 +3,7 @@ package com.example.lab2_new;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,21 +31,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ArrayList<String> info = new ArrayList<String>();
+        final SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
 
         info.add("Cheese - 100$/kg");
         info.add("Milk - 50$/kg");
 
         final TextView textView = (TextView) findViewById(R.id.mytextview);
 
+
         if (savedInstanceState != null) {
             selected_option = savedInstanceState.getInt("selected_option");
             if (selected_option == 0) {
                 textView.setText("The best cheese in town");
             } else if (selected_option == 1) {
-                textView.setText("What cheese is made of");
+
             }
-        } else {
-            textView.setText("Select a product");
+        } else{
+            textView.setText(sharedPref.getString("text_view", "Select a product"));
         }
 
 
@@ -58,13 +61,27 @@ public class MainActivity extends AppCompatActivity {
                 if (id == 0) {
                     textView.setText("The best cheese in town");
                     selected_option = 0;
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString("text_view", (String)textView.getText() + " - SharedPreferences");
+                    editor.commit();
+
                 } else if (id == 1) {
                     textView.setText("What cheese is made of");
                     selected_option = 1;
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString("text_view", (String)textView.getText() + " - SharedPreferences");
+                    editor.commit();
+
                 }
             }
         });
         listView.setAdapter(info_list);
+
+
+
+
+
+
     }
 
 
