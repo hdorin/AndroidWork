@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ArrayList<String> info = new ArrayList<String>();
-        final SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+
 
         info.add("Cheese - 100$/kg");
         info.add("Milk - 50$/kg");
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         } else{
-            textView.setText(sharedPref.getString("text_view", "Select a product"));
+            textView.setText("Select a product");
         }
 
 
@@ -61,27 +61,15 @@ public class MainActivity extends AppCompatActivity {
                 if (id == 0) {
                     textView.setText("The best cheese in town");
                     selected_option = 0;
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("text_view", (String)textView.getText() + " - SharedPreferences");
-                    editor.commit();
 
                 } else if (id == 1) {
                     textView.setText("What cheese is made of");
                     selected_option = 1;
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("text_view", (String)textView.getText() + " - SharedPreferences");
-                    editor.commit();
 
                 }
             }
         });
         listView.setAdapter(info_list);
-
-
-
-
-
-
     }
 
 
@@ -105,14 +93,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.first:
-                textView.setText("You selected first option!");
-                return true;
-            case R.id.second:
-                textView.setText("You selected second option!");
-                return true;
-            case R.id.third:
-                textView.setText("You selected third option!");
+            case R.id.settings:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.login:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
