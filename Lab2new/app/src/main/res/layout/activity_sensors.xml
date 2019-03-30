@@ -9,16 +9,26 @@
     <TextView
         android:id="@+id/sensorsTextView"
         android:layout_width="258dp"
-        android:layout_height="382dp"
+        android:layout_height="341dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="28dp"
+        android:scrollbars="vertical"
         android:text="TextView"
-        android:scrollbars = "vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/locationTextView"
+        android:layout_width="218dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:text="Locating..."
+        app:layout_constraintBottom_toTopOf="@+id/sensorsTextView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
