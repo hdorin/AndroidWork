@@ -97,6 +97,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.sensors:
+                intent = new Intent(this, SensorsActivity.class);
+                startActivity(intent);
+                return true;
             case R.id.login:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Connect");
