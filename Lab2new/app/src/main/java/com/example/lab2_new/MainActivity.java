@@ -114,6 +114,10 @@ public class MainActivity extends AppCompatActivity {
                 alertDialog.show();
 
                 return true;
+            case R.id.camera:
+                intent = new Intent(this, CameraActivity.class);
+                startActivity(intent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
