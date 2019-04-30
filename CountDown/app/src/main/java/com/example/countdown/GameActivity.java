@@ -1,6 +1,8 @@
 package com.example.countdown;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.graphics.PorterDuff;
@@ -20,11 +22,16 @@ public class GameActivity extends AppCompatActivity {
     private static int SPLASH_TME_OUT_LAST;
     private static int global_value;
     private static long start_millis,stop_millis;
-    private static long score=0;
+    private static int score=0;
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor sharedPrefeditor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        sharedPref = this.getSharedPreferences("score",Context.MODE_PRIVATE);
+        sharedPrefeditor = sharedPref.edit();
     }
     public void buttonPressed(View view) {
         Button button = (Button) findViewById(R.id.button);
@@ -55,6 +62,10 @@ public class GameActivity extends AppCompatActivity {
             if(start_millis + 5*SPLASH_TME_OUT-SPLASH_TME_OUT_LAST <= stop_millis){
                 countdown_view.setText("You won!");
                 score+=1;
+                if(sharedPref.getInt("score",0)<score){
+                    sharedPrefeditor.putInt("score",score);
+                    sharedPrefeditor.commit();
+                }
             }else{
                 countdown_view.setText("You failed!");
                 score=0;

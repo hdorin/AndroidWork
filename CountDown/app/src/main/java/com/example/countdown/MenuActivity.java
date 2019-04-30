@@ -21,4 +21,8 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }
+    public void showHighScore(View view){
+        Intent intent = new Intent(this, HighScoreActivity.class);
+        startActivity(intent);
+    }
 }

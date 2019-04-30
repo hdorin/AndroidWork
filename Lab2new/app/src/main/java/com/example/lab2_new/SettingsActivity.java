@@ -20,7 +20,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         sharedPref = this.getSharedPreferences("settings",Context.MODE_PRIVATE);
+        sharedPref = this.getSharedPreferences("settings",Context.MODE_PRIVATE);
         setContentView(R.layout.activity_settings);
         Switch optiunea1= findViewById(R.id.optiunea1);
         Switch optiunea2= findViewById(R.id.optiunea2);
