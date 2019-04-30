@@ -9,10 +9,24 @@
     <TextView
         android:id="@+id/countdown_view"
         android:layout_width="193dp"
-        android:layout_height="113dp"
-        android:layout_marginTop="116dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="28dp"
         android:text="Press START to begin!"
         android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score_view" />
+
+    <TextView
+        android:id="@+id/score_view"
+        android:layout_width="145dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="32dp"
+        android:text="Score: 0"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
