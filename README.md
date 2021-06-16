@@ -1,0 +1,1 @@
+CountDown is an Android game that has as objective pressing the button when the countdown reaches 0. The trick is that the countdown starts at 5, and vanishes after 2. The time between numbers varies for each round: it can be less than a second, or several seconds.
